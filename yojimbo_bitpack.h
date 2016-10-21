@@ -214,7 +214,8 @@ namespace yojimbo
 
             if ( m_scratchBits < bits )
             {
-                assert( m_wordIndex < m_numWords );
+                // This assert doesn't compile in release mode.  (m_numWords not available )
+                //assert( m_wordIndex < m_numWords );
                 m_scratch |= uint64_t( network_to_host( m_data[m_wordIndex] ) ) << m_scratchBits;
                 m_scratchBits += 32;
                 m_wordIndex++;
